@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docker and Devcontainers"
+  short_description: "Container-first command workflows"
+  default_prompt: "Use $docker-devcontainer-workflows to choose and run commands in Docker/devcontainers safely, preferring container execution over host execution for mounted project scripts."

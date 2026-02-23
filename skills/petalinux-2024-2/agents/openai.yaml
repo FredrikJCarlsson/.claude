@@ -1,0 +1,4 @@
+interface:
+  display_name: "PetaLinux 2024.2"
+  short_description: "PetaLinux 2024.2 command workflows"
+  default_prompt: "Use $petalinux-2024-2 to pick and sequence the right PetaLinux 2024.2 commands for my board and boot flow."
