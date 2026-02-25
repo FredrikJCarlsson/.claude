@@ -24,3 +24,11 @@ history.jsonl
 stats-cache.json
 
 backups/
+
+plans/
+
+.credentials.json
+
+mcp-needs-auth-cache.json
+
+tasks/
