@@ -32,3 +32,5 @@ plans/
 mcp-needs-auth-cache.json
 
 tasks/
+
+paste-cache/
