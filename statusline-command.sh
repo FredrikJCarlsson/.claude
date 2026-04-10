@@ -24,6 +24,18 @@ if [ -n "$model" ]; then
     [ -n "$thinking" ] && model_seg+=" ($thinking)"
 fi
 
+caveman_text=""
+caveman_flag="$HOME/.claude/.caveman-active"
+if [ -f "$caveman_flag" ]; then
+  caveman_mode=$(cat "$caveman_flag" 2>/dev/null)
+  if [ "$caveman_mode" = "full" ] || [ -z "$caveman_mode" ]; then
+    caveman_text="\033[38;5;172m[CAVEMAN]\033[0m"
+  else
+    caveman_suffix=$(echo "$caveman_mode" | tr '[:lower:]' '[:upper:]')
+    caveman_text="\033[38;5;172m[CAVEMAN:${caveman_suffix}]\033[0m"
+  fi
+fi
+
 SEP="   "
 
 parts=("$folder")
@@ -32,6 +44,7 @@ parts=("$folder")
 [ -n "$used_pct" ] && parts+=("ctx:$(printf '%.0f' "$used_pct")%")
 [ -n "$five_hour_pct" ] && parts+=("5h:$(printf '%.0f' "$five_hour_pct")%")
 [ -n "$seven_day_pct" ] && parts+=("7d:$(printf '%.0f' "$seven_day_pct")%")
+[ -n "$caveman_text" ] && parts+=("$caveman_text")
 
 result=""
 for part in "${parts[@]}"; do
@@ -39,4 +52,4 @@ for part in "${parts[@]}"; do
     result+="$part"
 done
 
-printf '%s' "$result"
+printf '%b' "$result"
